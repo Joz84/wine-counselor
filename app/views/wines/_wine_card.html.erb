@@ -1,0 +1,84 @@
+<div class="container py-3">
+  <div class="row card-display pt-3">
+    <% @wines.each_with_index do |wine, index| %>
+      <% if index < 4 %>
+        <div class="col-lg-3 col-md-5 pb-4">
+          <div class="card card-wine border rounded position-relative">
+            <% if wine.wine_photo.present? %>
+              <div class="card-bg-image pt-2 mx-auto"><%= cl_image_tag wine.wine_photo.key, width: 150, height: 150%></div>
+              <% else %>
+                <div class="card-bg-image pt-2 mx-auto" style="background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('<%= image_path "wine.png" %>'); max-height: 150px; max-width: 260px;;"></div>
+            <% end %>
+            <div class="card-body d-flex flex-column align-items-center gap-3">
+              <div class="d-flex flex-column h-100 justify-content-between">
+                <h4 class="card-title"> <%= wine.name %></h4>
+                <div class="lign">
+                </div>
+                <div class="card-text pt-2 pb-3 flex-grow-1">
+                  <p class="card-text"><%= truncate(wine.description, length: 90, omission: '...') %></p>
+                </div>
+                <div class="text-center">
+                  <button class="btn btn-primary btn-wine col-md-6 mb-3" type="button" data-bs-toggle="modal" data-bs-target="#wineModal<%= wine.id %>" aria-controls="offcanvasExample">
+                    En savoir plus
+                  </button>
+                  <!-- Vertically centered modal -->
+                  <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal fade" id="wineModal<%= wine.id %>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                      <div class="modal-dialog modal-dialog-centered modal-xl rounded">
+                        <div class="modal-content">
+                          <div class="modal-header text-center">
+                            <h2 class="modal-title" id="staticBackdropLabel"><%= wine.name%></h2>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                          </div>
+                          <div class="modal-body">
+                            <div class="container-fluid">
+                              <div class="row">
+                                <!-- debut -->
+                                <div class="col">
+                                  <% if wine.wine_photo.present? %>
+                                      <div class="modal-image pt-2 mx-auto"><%= cl_image_tag wine.wine_photo.key, width: 150, height: 150%></div>
+                                    <% else %>
+                                      <div class="modal-image pt-2 mx-auto" style="background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('<%= image_path "wine.png" %>'); max-height: 150px; max-width: 260px;;"></div>
+                                  <% end %>
+                                </div>
+                                <div class="col">
+                                  <h3 class="modal-subtitle pb-2"><%= wine.appellation %></h3>
+                                  <p class="modal-text pb-2"><em><%= wine.year %></em></p>
+                                  <div class="modal-lign">
+                                  </div>
+                                  <p class="modal-text pt-3"><%= wine.description + '.'%></p>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                            <div class="modal-footer">
+                              <% if @chatroom.bookings.find_by(wine: wine) %>
+                                <%= button_to  booking_path(@chatroom.bookings.find_by(wine: wine)), class: "btn btn-primary btn-modal col-md-6", method: :delete do %>
+                                <i class="fa-regular fa-circle-check me-2"></i> Ajouté
+                              <% end %>
+                            <% else %>
+                              <%= button_to "Ajouter à mes préférences", chatroom_bookings_path(@chatroom, wine: wine), class: "btn btn-primary btn-modal col-md-6", method: :post %>
+                            <% end %>
+                          </div>
+                         </div>
+                        </div>
+                      </div>
+                     </div>
+                    <!-- Fin modal -->
+                  </div>
+                  <% if @chatroom.bookings.find_by(wine: wine) %>
+                    <%= button_to  booking_path(@chatroom.bookings.find_by(wine: wine)), class: "btn btn-primary btn-modal col-md-6", method: :delete do %>
+                      <i class="fa-regular fa-circle-check me-2"></i> Ajouté
+                    <% end %>
+                  <% else %>
+                    <%= button_to "Ajouter à mes préférences", chatroom_bookings_path(@chatroom, wine: wine), class: "btn btn-primary btn-modal col-md-6", method: :post %>
+                  <% end %>
+                <%#= link_to 'Détail wine', wine_path(@wine), class: 'btn btn-primary' %>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>

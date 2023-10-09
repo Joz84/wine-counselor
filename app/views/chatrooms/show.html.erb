@@ -1,0 +1,21 @@
+<!-- Ouverture porte - trouver mon vin -->
+<% if @chatroom.answers.empty? %>
+  <div class="door <%= "hide" if @hide%>" data-controller="display-none" data-display-none-target="div">
+    <div class='door-left <%= "hide" if @hide%>' data-display-none-target="div doorLeft">
+      <div class="door-container" >
+      </div>
+    </div>
+    <div class='door-right <%= "hide" if @hide%>' data-display-none-target="div doorRight">
+      <div class="door-container" >
+      </div>
+    </div>
+    <a class='btn btn-door mx-auto <%= "hide" if @hide%>' data-display-none-target="div" data-action="click->display-none#disable" >Trouver mon vin</a>
+  </div>
+<% end %>
+
+<!-- Début chatroom -->
+<div class="chatroom_container mb-5">
+  <div id="chatroom">
+    <%= render 'messages', previous_answers: @previous_answers, current_question: @current_question, chatroom: @chatroom, answer: @answer %>
+  </div> <!-- Close the "chatroom" div -->
+</div> <!-- Close the "chatroom_container" div -->

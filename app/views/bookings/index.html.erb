@@ -1,0 +1,52 @@
+<div class="offer-pref">
+  <h1 class='text-center p-4'>Retrouvez vos vins préférés chez nos partenaires !</h1>
+  <% @bookings.each do |booking| %>
+    <div class="custom-row align-items-center mb-4">
+      <div class="col-md-3 line d-flex flex-column gap-3">
+        <div class="card-selected position-relative">
+            <div class="card-img-selected pt-2"><%= cl_image_tag booking.wine.wine_photo.key, width: 150, height: 150, class: "object-fit-cover" %></div>
+          <div class="title-card-selected card-title"><%= booking.wine.name %>
+            <div class="title-underline"></div>
+          </div>
+          <div class="position"><%= booking.wine.appellation %> <%= booking.wine.year %></div>
+        </div>
+      </div>
+      <div class="col-md-9 d-flex gap-1">
+          <% booking.wine.offers.each do |offer| %>
+            <div class="col-md-4">
+              <div class="card-offer-booking h-100 d-flex flex-column ">
+                <div class="align-items-center d-flex flex-grow-1 justify-content-center offer-booking-img pt-2">
+                  <%= cl_image_tag offer.offer_photo.key, width: 200, height: 100, class: "img-fluid object-fit-cover w-100" %>
+                </div>
+                <div class="row foricon justify-content-center mt-2">
+                  <div class="row icon align-items-center justify-content-between text-center">
+                    <div class="col-4">
+                      <%= image_tag("livraison.png") %>
+                    </div>
+                    <div class="col-4">
+                      <%= image_tag("etiqueter.png") %>
+                    </div>
+                    <div class="col-4">
+                      <%= image_tag("vin.png") %>
+                    </div>
+                  </div>
+                  <div class="row align-items-center justify-content-between text-center mt-2">
+                    <div class="col-4">
+                      <%= (offer.delivery - Date.today).to_i %> jours
+                    </div>
+                    <div class="col-4">
+                      <%= offer.price %> €
+                    </div>
+                    <div class="col-4">
+                      <%= offer.quantity %> col
+                    </div>
+                  </div>
+                </div>
+              <a href="<%= offer.url %>" class="btn mt-3">Acheter ici</a>
+              </div>
+            </div>
+          <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>

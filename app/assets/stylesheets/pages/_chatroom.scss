@@ -1,0 +1,89 @@
+/* Styles for chat containers */
+.chat-container {
+  display: flex;
+  position: relative;
+  align-items: flex-start;
+  margin-left: 70px;
+  margin-right: 100px;
+}
+
+/* Styles for question bubbles (including arrow) */
+.bubble_question {
+  width: calc(100% - 250px);
+  margin-left: 50px;
+  padding: 20px;
+  background-color: $white ;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  position: relative;
+
+  /* Add the arrow styles here */
+  &::before {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 10px solid $white;
+    left: -7px;
+    top: 32%;
+    transform: translateY(12%);
+  }
+}
+
+/* Styles for answer bubbles */
+.bubble_answer {
+  width: calc(100% - 250px);
+  margin-right: 50px;
+  padding: 20px;
+  background-color: $red;
+  color: $white;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  right: -40px;
+  margin-top: 100px;
+  position: relative;
+
+  /* Add the arrow styles here */
+  &::before {
+    content: "";
+    color: $white;
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 10px solid $red;
+    right: -7px;
+    top: 32%;
+    transform: translateY(12%);
+  }
+}
+
+.chatroom-label {
+  &:hover {
+    background-color: $white;
+    color: $red;
+    font-family: 'Lobster';
+    border-radius: 10px;
+  }
+
+  label {
+    padding: 1em;
+    color: white;
+    background-color: $red;
+    font-family: 'Lobster';
+    border-radius: 10px;
+    cursor: pointer;
+  }
+}
+
+.chatroom-input:checked + label {
+  background-color: $white;
+  color: black
+}
+
+#messages {
+  font-size: 1.3rem;
+}

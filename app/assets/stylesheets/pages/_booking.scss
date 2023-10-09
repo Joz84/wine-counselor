@@ -1,0 +1,95 @@
+.offer-pref {
+  width: 100%;
+  padding: 10px;
+}
+
+.custom-row {
+  display: flex;
+  min-height: 100%;
+  min-width: 100%;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 10px;
+  padding: 20px;
+  margin-top: 10px;
+}
+
+.card-selected {
+  background-color: white;
+  padding: 10px;
+  color: black;
+  border-radius: 10px;
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
+  height: 301px;
+}
+
+.title-card-selected {
+  color: $red;
+  text-align: center;
+  padding: 10px;
+}
+
+.title-underline {
+  width: 80%;
+  height: 0.2px;
+  background-color: red;
+  margin: 0 auto;
+  margin-top: 5px;
+}
+
+.card-img-selected {
+  text-align: center;
+  border: 0.01px solid #c9c7c7;
+  border-radius: 10px;
+  padding: 5px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.position {
+  text-align: center;
+}
+
+.rating-stars {
+  text-align: center;
+  display: inline-block;
+  font-size: 18px;
+  color: gold;
+  padding-left: 2px;
+  padding-top: -2px;
+}
+
+.star-filled {
+  color: gold;
+}
+
+.star-empty {
+  color: gray;
+}
+
+.line {
+  border-right: 1px solid #000;
+  height: 80%;
+  padding : 20px;
+}
+
+.rating-note {
+  margin: auto;
+  padding-left: 75px;
+
+}
+
+.icon {
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  align-items: flex-end;
+  margin-top: 5px;
+
+  img {
+    max-width: 50px;
+    max-height: 50px;
+  }
+}
+
+.middle {
+  margin-top: 35px;
+}

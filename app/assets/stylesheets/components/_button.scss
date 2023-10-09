@@ -1,0 +1,63 @@
+.btn {
+  background-color: $red;
+  color: $white;
+  border-radius: 10px;
+  width: 100%;
+  font-family: 'Lobster' !important;
+  text-transform: uppercase !important;
+  font-size: 14px;
+  letter-spacing: .1rem;
+}
+
+.btn:hover{
+  border: 1px solid $red;
+  background-color: $white;
+  color: $red;
+}
+
+.btn-show {
+  width: 40%;
+}
+
+.btn-home {
+  width: 40%;
+  font-size: 18px;
+}
+
+.btn-door {
+  width: 30%;
+  font-size: 28px;
+  background-color: #dca6a623;
+  border: 5px;
+  box-shadow: 5px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+}
+
+.btn-valid {
+  height: 55px;
+  width: 18%;
+  border:  black;
+  border-radius: 10px;
+  font-size: 18px;
+}
+
+.btn-modal {
+  width: 100% !important;
+  font-size: 14px !important;
+}
+
+.btn-pref {
+  width: 50% !important;
+  font-size: 18px !important;
+  margin: auto;
+}
+
+.url-card-offered-btn {
+  text-align: center;
+  padding: 10px;
+  border-radius: 10px;
+}

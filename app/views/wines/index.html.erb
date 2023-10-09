@@ -1,0 +1,16 @@
+<h1 class='text-center pt-4 pb-3'>Notre selection de vins</h1>
+
+<%= render 'wine_card' %>
+
+<div class="validates">
+  <div class = "row" >
+    <div class="col-md-8">
+      <div class="d-flex justify-content-center align-items-center h-100">
+        <p class="mb-0"><%= "#{@bookings.count} préférences ajoutées" %></p>
+      </div>
+    </div>
+    <div class="col-md-4 mx-auto">
+      <%= link_to "Voir les offres",  chatroom_bookings_path, class: "btn btn-primary btn-wine"%>
+    </div>
+  </div>
+</div>
